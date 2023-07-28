@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AppBar, Box, Typography, Link, Toolbar, Stack } from '@mui/material';
-import './NavMenu.css';
+import '../styles/NavMenu.css';
 
 interface NavMenuState {
     collapsed: boolean;
