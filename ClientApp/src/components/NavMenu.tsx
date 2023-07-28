@@ -29,7 +29,12 @@ export class NavMenu extends Component<{}, NavMenuState> {
         return (
             <header>
                 <Box sx={{ flexGrow: 1 }}>
-                    <AppBar position="static">
+                    <AppBar position="static"
+                        sx={{
+                            backgroundColor: "background.paper",
+                            color: "text.secondary"
+                        } }
+                    >
                         <Toolbar>
                             <Typography
                                 variant="h6" component="div" sx={{ flexGrow: 1 }}>
