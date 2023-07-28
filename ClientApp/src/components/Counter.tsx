@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
-export class Counter extends Component {
+interface CounterState {
+    currentCount: number;
+}
+
+export class Counter extends Component<{}, CounterState> {
   static displayName = Counter.name;
 
   constructor(props) {
