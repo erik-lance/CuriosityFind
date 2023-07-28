@@ -1,51 +1,53 @@
 import React, { Component } from 'react';
 import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { AppBar, Box, Typography, Link, Toolbar, Stack } from '@mui/material';
 import './NavMenu.css';
 
 interface NavMenuState {
-collapsed: boolean;
+    collapsed: boolean;
 }
 
 export class NavMenu extends Component<{}, NavMenuState> {
-  static displayName = NavMenu.name;
+    static displayName = NavMenu.name;
 
-  constructor (props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.toggleNavbar = this.toggleNavbar.bind(this);
-    this.state = {
-      collapsed: true
-    };
-  }
+        this.toggleNavbar = this.toggleNavbar.bind(this);
+        this.state = {
+            collapsed: true
+        };
+    }
 
-  toggleNavbar () {
-    this.setState({
-      collapsed: !this.state.collapsed
-    });
-  }
+    toggleNavbar() {
+        this.setState({
+            collapsed: !this.state.collapsed
+        });
+    }
 
-  render() {
-    return (
-      <header>
-        <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" container light>
-          <NavbarBrand tag={Link} to="/">CuriosityFind</NavbarBrand>
-          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-          <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
-            <ul className="navbar-nav flex-grow">
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-              </NavItem>
-            </ul>
-          </Collapse>
-        </Navbar>
-      </header>
-    );
-  }
+    render() {
+        return (
+            <header>
+                <Box sx={{ flexGrow: 1 }}>
+                    <AppBar position="static">
+                        <Toolbar>
+                            <Typography
+                                variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                                CuriosityFind
+                            </Typography>
+                            <Box sx={{ flexGrow: 1 }} />
+                            <Stack
+                                direction="row"
+                                spacing={2}
+                            >
+                                <Link href="/" underline="none" color="white">Home</Link>
+                                <Link href="/counter" underline="none" color="white">Counter</Link>
+                                <Link href="/fetch-data" underline="none" color="white">Fetch data</Link>
+                            </Stack>
+                        </Toolbar>
+                    </AppBar>
+                </Box>
+            </header>
+        );
+    }
 }
