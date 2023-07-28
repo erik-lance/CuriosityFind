@@ -47,6 +47,7 @@ export class NavMenu extends Component<{}, NavMenuState> {
                                 <Link href="/" underline="none" color="white">Home</Link>
                                 <Link href="/counter" underline="none" color="white">Counter</Link>
                                 <Link href="/fetch-data" underline="none" color="white">Fetch data</Link>
+                                <Link href="/quizzes" underline="none" color="white">Quizzes</Link>
                             </Stack>
                         </Toolbar>
                     </AppBar>
