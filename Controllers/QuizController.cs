@@ -20,12 +20,14 @@ namespace CuriosityFind.Controllers
             return new JsonResult(quizzes);
         }
 
+        [HttpGet]
         public IActionResult GetAllQuizzes()
         {
             var quizzes = _context.Quizzes.ToList();
             return Ok(quizzes);
         }
 
+        [HttpGet("{id}")]
         public IActionResult GetQuiz(int id)
         {
             var quiz = _context.Quizzes.Find(id);
