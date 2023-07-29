@@ -11,16 +11,15 @@ export default function Quizzes() {
             .then(data => setQuizzes(data));
     }
 
+    fetchQuizzes();
 
     return (
         <Container>
             <Typography variant="h1">Quizzes</Typography>
 
-            <button onClick={fetchQuizzes}>Fetch Quizzes</button>
-
             <List>
                 {quizzes.map(quiz => (
-                    <ListItem key="quiz.id">
+                    <ListItem key={quiz.id}>
                         <ListItemText
                             primary={quiz.title}
                             secondary={quiz.description}
