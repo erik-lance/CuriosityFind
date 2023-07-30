@@ -7,7 +7,7 @@ namespace CuriosityFind.Models
         public int Id { get; set; }
 
         [Required]
-        public string QuestionText { get; set; }
+        public string QuestionTitle { get; set; }
 
         [Required]
         public string Answer { get; set; }
