@@ -1,11 +1,16 @@
 using System.ComponentModel.DataAnnotations;
 
-public class Quiz
+namespace CuriosityFind.Models
 {
-    public int Id { get; set; }
+    public class Quiz
+    {
+        public int Id { get; set; }
 
-    [Required]
-    public string Title { get; set; }
+        [Required]
+        public string Title { get; set; }
 
-    public string Description { get; set; }
+        public string Description { get; set; }
+
+        public List<Question> Questions { get; set; }
+    }
 }
