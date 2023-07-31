@@ -1,5 +1,6 @@
 ﻿using CuriosityFind.Data;
 using Microsoft.AspNetCore.Mvc;
+using CuriosityFind.Models;
 
 namespace CuriosityFind.Controllers
 {

@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-
+using CuriosityFind.Models;
 namespace CuriosityFind.Data
 {
     public class ApplicationDbContext : DbContext
