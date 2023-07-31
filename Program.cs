@@ -25,6 +25,18 @@ app.UseRouting();
 
 app.MapControllers();
 
+// Database Seed
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+    // Migrate
+    dbContext.Database.Migrate();
+
+    // Seed
+    SeedData.Initialize(dbContext);
+}
+
 app.MapFallbackToFile("index.html"); ;
 
 app.Run();
