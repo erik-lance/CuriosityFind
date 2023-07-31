@@ -1,4 +1,5 @@
 ﻿using CuriosityFind.Models;
+using static CuriosityFind.Data.QuizSeed;
 
 namespace CuriosityFind.Data
 {
@@ -9,8 +10,8 @@ namespace CuriosityFind.Data
             if (!dbContext.Quizzes.Any())
             {
                 // Seed Quizzes
-                var quiz1 = QuizSeed.Quiz1();
-                var quiz2 = QuizSeed.Quiz2();
+                var quiz1 = Quiz1();
+                var quiz2 = Quiz2();
 
                 var quizzes = new List<Quiz>
                 {
