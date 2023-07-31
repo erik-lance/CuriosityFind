@@ -7,9 +7,9 @@ namespace CuriosityFind.Models
         public int Id { get; set; }
 
         [Required]
-        public string QuestionTitle { get; set; }
+        public string QuestionTitle { get; set; } = string.Empty;
 
         [Required]
-        public string Answer { get; set; }
+        public string Answer { get; set; } = string.Empty;
     }
 }
