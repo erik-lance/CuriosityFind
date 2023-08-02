@@ -25,6 +25,16 @@ namespace CuriosityFind.Controllers
         public IActionResult GetAllQuizzes()
         {
             var quizzes = _context.Quizzes.ToList();
+            // Populate questions for each quiz
+
+            var questions = _context.Questions.ToList();
+
+            foreach (var quiz in quizzes)
+            {
+                var quizQuestions = questions.Where(q => q.QuizId == quiz.Id).ToList();
+                quiz.Questions = quizQuestions;
+            }
+
             return Ok(quizzes);
         }
 
@@ -32,6 +42,9 @@ namespace CuriosityFind.Controllers
         public IActionResult GetQuiz(int id)
         {
             var quiz = _context.Quizzes.Find(id);
+            var questions = _context.Questions.Where(q => q.QuizId == quiz.Id).ToList();
+            quiz.Questions = questions;
+
             return Ok(quiz);
         }
 
@@ -80,6 +93,13 @@ namespace CuriosityFind.Controllers
             }
             else
             {
+                // Remove questions first
+                var questions = _context.Questions.Where(q => q.QuizId == quiz.Id).ToList();
+                foreach (var question in questions)
+                {
+                    _context.Questions.Remove(question);
+                }
+
                 _context.Quizzes.Remove(quiz);
                 _context.SaveChanges();
                 return Ok(quiz);
