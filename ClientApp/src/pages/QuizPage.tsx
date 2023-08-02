@@ -1,10 +1,11 @@
-import { CircularProgress, Container } from "@mui/material";
+import { Button, CircularProgress, Container, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function QuizPage() {
     const { id } = useParams();
     const [quiz, setQuiz] = useState(null);
+    const [currentQuestion, setCurrentQuestion] = useState(0);
 
     useEffect(() => {
         // Fetch the quiz from the server
@@ -20,7 +21,44 @@ function QuizPage() {
                 {!quiz && <CircularProgress />}
                 {quiz && (
                     <>
-                        
+                        <Typography
+                            variant="h3"
+                        >
+                            {quiz.title}
+                        </Typography>
+
+                        <Typography
+                            variant="subtitle1"
+                        >
+                            {quiz.description}
+                        </Typography>
+
+                        {/* Load Start, else load questions */}
+                        {currentQuestion == 0 ? (<>
+                            <Typography variant="h3">Are you ready to begin?</Typography>
+                            <Button>Begin!</Button>
+                        </>) : (<>
+
+                            {/* If reached max question, else */}
+                            {currentQuestion == quiz.questions.length ? (<>
+                                <Typography variant="h3">You have completed the quiz!</Typography>
+                            </>) : (<>
+                                {/* Displays each question one at a time */}
+                                {/* Question is based on questionnumber set */}
+                                <Typography
+                                    variant="h4"
+                                >
+                                    {quiz.questions[currentQuestion].question}
+                                </Typography>
+
+                                {/* Displays each answer for the question */}
+                            </>)}
+                        </>)}
+
+
+
+
+
                     </>
                 )}
             </Container>
