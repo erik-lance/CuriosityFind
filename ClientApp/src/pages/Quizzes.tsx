@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { Container, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { Container, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, Typography } from "@mui/material";
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 export default function Quizzes() {
     const [quizzes, setQuizzes] = useState([]);
@@ -24,6 +25,13 @@ export default function Quizzes() {
                             primary={quiz.title}
                             secondary={quiz.description}
                         />
+                        <ListItemSecondaryAction>
+                            <IconButton aria-label="go-to-quiz"
+                                href={`/quiz/${quiz.id.toString()}`}
+                            >
+                                <PlayArrowIcon />
+                            </IconButton>
+                        </ListItemSecondaryAction>
                     </ListItem>
                 ))}
 
