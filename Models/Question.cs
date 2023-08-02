@@ -11,5 +11,7 @@ namespace CuriosityFind.Models
 
         [Required]
         public string Answer { get; set; } = string.Empty;
+
+        public int QuizId { get; set; }
     }
 }
