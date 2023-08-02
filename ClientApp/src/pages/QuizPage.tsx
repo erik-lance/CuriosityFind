@@ -2,10 +2,27 @@ import { Box, Button, CircularProgress, Container, Typography } from "@mui/mater
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+interface Quiz {
+    id: number;
+    title: string;
+    description: string;
+    questions: Question[];
+}
+
+interface Question {
+    id: number;
+    questionTitle: string;
+    answer: string;
+}
+
 function QuizPage() {
     const { id } = useParams();
-    const [quiz, setQuiz] = useState(null);
+    const [quiz, setQuiz] = useState(null as Quiz);
     const [currentQuestion, setCurrentQuestion] = useState(0);
+
+    const nextQuestion = () => {
+        setCurrentQuestion(currentQuestion + 1);
+    }
 
     useEffect(() => {
         // Fetch the quiz from the server
@@ -46,6 +63,7 @@ function QuizPage() {
                                 <Typography variant="h3">Are you ready to begin?</Typography>
                                 <Button
                                     variant="contained"
+                                    onClick={() => setCurrentQuestion(1)}
                                 >
                                     Begin!
                                 </Button>
@@ -53,7 +71,7 @@ function QuizPage() {
                         </>) : (<>
 
                             {/* If reached max question, else */}
-                            {currentQuestion == quiz.questions.length ? (<>
+                            {currentQuestion === quiz.questions.length ? (<>
                                 <Typography variant="h3">You have completed the quiz!</Typography>
                             </>) : (<>
                                 {/* Displays each question one at a time */}
@@ -61,7 +79,7 @@ function QuizPage() {
                                 <Typography
                                     variant="h4"
                                 >
-                                    {quiz.questions[currentQuestion].question}
+                                    {quiz.questions[currentQuestion].questionTitle}
                                 </Typography>
 
                                 {/* Displays each answer for the question */}
