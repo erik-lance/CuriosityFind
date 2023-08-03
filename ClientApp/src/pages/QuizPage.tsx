@@ -51,7 +51,7 @@ function QuizPage() {
                         </Typography>
                         
                         {/* Load Start, else load questions */}
-                        {currentQuestion == 0 ? (<>
+                        {currentQuestion == -1 ? (<>
                             <Box
                                 display="flex"
                                 flexDirection="column"
