@@ -18,7 +18,7 @@ interface Question {
 function QuizPage() {
     const { id } = useParams();
     const [quiz, setQuiz] = useState(null as Quiz);
-    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [currentQuestion, setCurrentQuestion] = useState(-1);
 
     const nextQuestion = () => {
         setCurrentQuestion(currentQuestion + 1);
@@ -49,7 +49,7 @@ function QuizPage() {
                         >
                             {quiz.description}
                         </Typography>
-
+                        
                         {/* Load Start, else load questions */}
                         {currentQuestion == 0 ? (<>
                             <Box
@@ -63,7 +63,7 @@ function QuizPage() {
                                 <Typography variant="h3">Are you ready to begin?</Typography>
                                 <Button
                                     variant="contained"
-                                    onClick={() => setCurrentQuestion(1)}
+                                    onClick={() => setCurrentQuestion(0)}
                                 >
                                     Begin!
                                 </Button>
