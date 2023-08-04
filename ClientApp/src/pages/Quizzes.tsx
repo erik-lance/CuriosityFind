@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Container, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, Typography } from "@mui/material";
+import { Container, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, Paper, Typography } from "@mui/material";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 export default function Quizzes() {
@@ -20,7 +20,12 @@ export default function Quizzes() {
 
             <List>
                 {quizzes.map(quiz => (
-                    <ListItem key={quiz.id}>
+                    <Paper
+                        elevation={3}
+                    >
+                    <ListItem
+                        key={quiz.id}
+                    >
                         <ListItemText
                             primary={quiz.title}
                             secondary={quiz.description}
@@ -32,7 +37,9 @@ export default function Quizzes() {
                                 <PlayArrowIcon />
                             </IconButton>
                         </ListItemSecondaryAction>
-                    </ListItem>
+                        </ListItem>
+
+                    </Paper>
                 ))}
 
             </List>
