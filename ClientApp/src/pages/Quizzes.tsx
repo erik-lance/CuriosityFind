@@ -18,25 +18,42 @@ export default function Quizzes() {
         <Container>
             <Typography variant="h1">Quizzes</Typography>
 
-            <List>
+            <List
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 2,
+                }}
+            >
                 {quizzes.map(quiz => (
                     <Paper
                         elevation={3}
+                        sx={{
+                            backgroundColor: 'background.default',
+                        } }
                     >
-                    <ListItem
-                        key={quiz.id}
-                    >
-                        <ListItemText
-                            primary={quiz.title}
-                            secondary={quiz.description}
-                        />
-                        <ListItemSecondaryAction>
-                            <IconButton aria-label="go-to-quiz"
-                                href={`/quiz/${quiz.id.toString()}`}
-                            >
-                                <PlayArrowIcon />
-                            </IconButton>
-                        </ListItemSecondaryAction>
+                        <ListItem
+                            key={quiz.id}
+                        >
+                            <ListItemText
+                                primary={quiz.title}
+                                secondary={quiz.description}
+                                primaryTypographyProps={{
+                                    variant: 'h4',
+                                    color: 'primary',
+                                }}
+                                secondaryTypographyProps={{
+                                    variant: 'body1',
+                                    color: 'text.primary',
+                                }}
+                            />
+                            <ListItemSecondaryAction>
+                                <IconButton aria-label="go-to-quiz"
+                                    href={`/quiz/${quiz.id.toString()}`}
+                                >
+                                    <PlayArrowIcon />
+                                </IconButton>
+                            </ListItemSecondaryAction>
                         </ListItem>
 
                     </Paper>
