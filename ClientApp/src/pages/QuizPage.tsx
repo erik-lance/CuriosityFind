@@ -12,7 +12,13 @@ interface Quiz {
 interface Question {
     id: number;
     questionTitle: string;
+    options: Option[];
     answer: string;
+}
+
+interface Option {
+    id: number;
+    option: string;
 }
 
 function QuizPage() {
