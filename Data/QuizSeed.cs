@@ -4,41 +4,49 @@ namespace CuriosityFind.Data
 {
     public class QuizSeed
     {
+        public static Question QuestionSeed(string title, string answer, params Option[] options)
+        {
+            return new Question
+            {
+                QuestionTitle = title,
+                Answer = answer,
+                Options = options
+            };
+        }
+
+        public static Option OptionSeed(string title)
+        {
+            return new Option
+            {
+                OptionText = title
+            };
+        }
+
+        public static List<Question> QuestionsTemplate()
+        {
+            var options = new Option[4]
+            {
+                OptionSeed("Choice 1"),
+                OptionSeed("Choice 2"),
+                OptionSeed("Choice 3"),
+                OptionSeed("Choice 4")
+            };
+
+            var questions = new List<Question>
+            {
+                QuestionSeed("Question 1", "Choice 1", options),
+                QuestionSeed("Question 2", "Choice 2", options),
+                QuestionSeed("Question 3", "Choice 3", options),
+                QuestionSeed("Question 4", "Choice 4", options),
+                QuestionSeed("Question 5", "Choice 1", options)
+            };
+
+            return questions;
+        }
+
         public static Quiz Quiz1()
         {
-            var quizQuestions = new List<Question>
-            {
-                new Question
-                {
-                    QuestionTitle = "Question 1",
-                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
-                    Answer = "Choice 1"
-                },
-                new Question
-                {
-                    QuestionTitle = "Question 2",
-                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
-                    Answer = "Choice 2"
-                },
-                new Question
-                {
-                    QuestionTitle = "Question 3",
-                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
-                    Answer = "Choice 3"
-                },
-                new Question
-                {
-                    QuestionTitle = "Question 4",
-                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
-                    Answer = "Choice 4"
-                },
-                new Question
-                {
-                    QuestionTitle = "Question 5",
-                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
-                    Answer = "Choice 1"
-                }
-            };
+            var quizQuestions = QuestionsTemplate();
 
             return new Quiz
             {
@@ -50,39 +58,8 @@ namespace CuriosityFind.Data
 
         public static Quiz Quiz2()
         {
-            var quizQuestions = new List<Question>
-            {
-                new Question
-                {
-                    QuestionTitle = "Question 1",
-                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
-                    Answer = "Choice 1"
-                },
-                new Question
-                {
-                    QuestionTitle = "Question 2",
-                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
-                    Answer = "Choice 2"
-                },
-                new Question
-                {
-                    QuestionTitle = "Question 3",
-                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
-                    Answer = "Choice 3"
-                },
-                new Question
-                {
-                    QuestionTitle = "Question 4",
-                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
-                    Answer = "Choice 4"
-                },
-                new Question
-                {
-                    QuestionTitle = "Question 5",
-                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
-                    Answer = "Choice 1"
-                }
-            };
+            var quizQuestions = QuestionsTemplate();
+
             return new Quiz
             {
                 Title = "Quiz 2",
