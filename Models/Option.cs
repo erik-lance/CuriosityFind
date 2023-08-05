@@ -9,5 +9,7 @@ namespace CuriosityFind.Models
 
         [Required]
         public string OptionText { get; set; } = string.Empty;
+
+        public int QuestionId { get; set; }
     }
 }
