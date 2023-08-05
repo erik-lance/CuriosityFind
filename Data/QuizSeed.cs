@@ -22,7 +22,7 @@ namespace CuriosityFind.Data
             };
         }
 
-        public static List<Question> QuestionsTemplate()
+        public static List<Option> OptionsSeed()
         {
             var options = new List<Option>
             {
@@ -31,14 +31,17 @@ namespace CuriosityFind.Data
                 OptionSeed("Choice 3"),
                 OptionSeed("Choice 4")
             };
+            return options;
+        }
 
+        public static List<Question> QuestionsTemplate()
+        {
             var questions = new List<Question>
-            {
-                QuestionSeed("Question 1", "Choice 1", options),
-                QuestionSeed("Question 2", "Choice 2", options),
-                QuestionSeed("Question 3", "Choice 3", options),
-                QuestionSeed("Question 4", "Choice 4", options),
-                QuestionSeed("Question 5", "Choice 1", options)
+            { 
+                QuestionSeed("Question 1", "Choice 1", OptionsSeed()),
+                QuestionSeed("Question 2", "Choice 2", OptionsSeed()),
+                QuestionSeed("Question 3", "Choice 3", OptionsSeed()),
+                QuestionSeed("Question 4", "Choice 4", OptionsSeed())
             };
 
             return questions;
