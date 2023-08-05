@@ -9,6 +9,11 @@ namespace CuriosityFind.Data
         {
             if (!dbContext.Quizzes.Any())
             {
+                // Clear existing data on DB
+                dbContext.Quizzes.RemoveRange(dbContext.Quizzes);
+                dbContext.Questions.RemoveRange(dbContext.Questions);
+                dbContext.SaveChanges();
+
                 // Seed Quizzes
                 var quiz1 = Quiz1();
                 var quiz2 = Quiz2();
