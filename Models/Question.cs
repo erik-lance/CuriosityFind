@@ -10,7 +10,7 @@ namespace CuriosityFind.Models
         public string QuestionTitle { get; set; } = string.Empty;
 
         [Required]
-        public string[] Choices { get; set; } = new string[4];
+        public List<string> Choices { get; set; } = new List<string>();
 
         [Required]
         public string Answer { get; set; } = string.Empty;
