@@ -1,4 +1,5 @@
 ﻿using CuriosityFind.Models;
+using Microsoft.EntityFrameworkCore;
 using static CuriosityFind.Data.QuizSeed;
 
 namespace CuriosityFind.Data
@@ -7,13 +8,13 @@ namespace CuriosityFind.Data
     {
         public static void Initialize(ApplicationDbContext dbContext)
         {
+            // Clear existing data on DB
+            dbContext.Database.ExecuteSqlRaw("DELETE FROM Quizzes");
+            dbContext.Database.ExecuteSqlRaw("DELETE FROM Questions");
+            dbContext.Database.ExecuteSqlRaw("DELETE FROM Options");
+
             if (!dbContext.Quizzes.Any())
             {
-                // Clear existing data on DB
-                dbContext.Quizzes.RemoveRange(dbContext.Quizzes);
-                dbContext.Questions.RemoveRange(dbContext.Questions);
-                dbContext.SaveChanges();
-
                 // Seed Quizzes
                 var quiz1 = Quiz1();
                 var quiz2 = Quiz2();
