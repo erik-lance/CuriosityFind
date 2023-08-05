@@ -4,7 +4,7 @@ namespace CuriosityFind.Data
 {
     public class QuizSeed
     {
-        public static Question QuestionSeed(string title, string answer, params Option[] options)
+        public static Question QuestionSeed(string title, string answer, List<Option> options)
         {
             return new Question
             {
@@ -24,7 +24,7 @@ namespace CuriosityFind.Data
 
         public static List<Question> QuestionsTemplate()
         {
-            var options = new Option[4]
+            var options = new List<Option>
             {
                 OptionSeed("Choice 1"),
                 OptionSeed("Choice 2"),
