@@ -11,31 +11,31 @@ namespace CuriosityFind.Data
                 new Question
                 {
                     QuestionTitle = "Question 1",
-                    Choices = new string[] { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
+                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
                     Answer = "Choice 1"
                 },
                 new Question
                 {
                     QuestionTitle = "Question 2",
-                    Choices = new string[] { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
+                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
                     Answer = "Choice 2"
                 },
                 new Question
                 {
                     QuestionTitle = "Question 3",
-                    Choices = new string[] { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
+                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
                     Answer = "Choice 3"
                 },
                 new Question
                 {
                     QuestionTitle = "Question 4",
-                    Choices = new string[] { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
+                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
                     Answer = "Choice 4"
                 },
                 new Question
                 {
                     QuestionTitle = "Question 5",
-                    Choices = new string[] { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
+                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
                     Answer = "Choice 1"
                 }
             };
@@ -55,31 +55,31 @@ namespace CuriosityFind.Data
                 new Question
                 {
                     QuestionTitle = "Question 1",
-                    Choices = new string[] { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
+                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
                     Answer = "Choice 1"
                 },
                 new Question
                 {
                     QuestionTitle = "Question 2",
-                    Choices = new string[] { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
+                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
                     Answer = "Choice 2"
                 },
                 new Question
                 {
                     QuestionTitle = "Question 3",
-                    Choices = new string[] { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
+                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
                     Answer = "Choice 3"
                 },
                 new Question
                 {
                     QuestionTitle = "Question 4",
-                    Choices = new string[] { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
+                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
                     Answer = "Choice 4"
                 },
                 new Question
                 {
                     QuestionTitle = "Question 5",
-                    Choices = new string[] { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
+                    Choices = new List<string> { "Choice 1", "Choice 2", "Choice 3", "Choice 4" },
                     Answer = "Choice 1"
                 }
             };
