@@ -18,7 +18,7 @@ interface Question {
 
 interface Option {
     id: number;
-    option: string;
+    optionText: string;
 }
 
 function QuizPage() {
@@ -82,7 +82,6 @@ function QuizPage() {
                                 </Button>
 
                             </>) : (<>
-
                                 {/* If reached max question, else */}
                                 {currentQuestion === quiz.questions.length ? (<>
                                     <Typography variant="h3">You have completed the quiz!</Typography>
@@ -96,12 +95,18 @@ function QuizPage() {
                                     </Typography>
 
                                     {/* Displays each answer for the question */}
+                                            {console.log(quiz.questions[currentQuestion].options)}
+                                            {console.log(quiz.questions[currentQuestion]) }
+                                    {quiz.questions[currentQuestion].options.map(option => (
+                                        <Button
+                                            variant="contained"
+                                            onClick={() => nextQuestion()}
+                                        >
+                                            {option.optionText}
+                                        </Button>
+                                    ))}
                                 </>)}
                             </>)}
-
-
-
-
 
                         </>
                     )}
