@@ -1,6 +1,7 @@
 ﻿using CuriosityFind.Data;
 using Microsoft.AspNetCore.Mvc;
 using CuriosityFind.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CuriosityFind.Controllers
 {
@@ -24,16 +25,10 @@ namespace CuriosityFind.Controllers
         [HttpGet]
         public IActionResult GetAllQuizzes()
         {
-            var quizzes = _context.Quizzes.ToList();
-            // Populate questions for each quiz
-
-            var questions = _context.Questions.ToList();
-
-            foreach (var quiz in quizzes)
-            {
-                var quizQuestions = questions.Where(q => q.QuizId == quiz.Id).ToList();
-                quiz.Questions = quizQuestions;
-            }
+            var quizzes = _context.Quizzes
+                .Include(q => q.Questions) // Include questions
+                .ThenInclude(q => q.Options) // Include options
+                .ToList();
 
             return Ok(quizzes);
         }
@@ -41,9 +36,15 @@ namespace CuriosityFind.Controllers
         [HttpGet("{id}")]
         public IActionResult GetQuiz(int id)
         {
-            var quiz = _context.Quizzes.Find(id);
-            var questions = _context.Questions.Where(q => q.QuizId == quiz.Id).ToList();
-            quiz.Questions = questions;
+            var quiz = _context.Quizzes
+                .Include(q => q.Questions) // Include questions
+                .ThenInclude(q => q.Options) // Include options
+                .FirstOrDefault(q => q.Id == id);
+
+            if (quiz == null)
+            {
+                return NotFound();
+            }
 
             return Ok(quiz);
         }
@@ -86,24 +87,19 @@ namespace CuriosityFind.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteQuiz(int id)
         {
-            var quiz = _context.Quizzes.Find(id);
+            var quiz = _context.Quizzes
+                .Include(q => q.Questions) // Include questions
+                .ThenInclude(q => q.Options) // Include options
+                .FirstOrDefault(q => q.Id == id);
+
             if (quiz == null)
             {
                 return NotFound();
             }
-            else
-            {
-                // Remove questions first
-                var questions = _context.Questions.Where(q => q.QuizId == quiz.Id).ToList();
-                foreach (var question in questions)
-                {
-                    _context.Questions.Remove(question);
-                }
 
-                _context.Quizzes.Remove(quiz);
-                _context.SaveChanges();
-                return Ok(quiz);
-            }
+            _context.Quizzes.Remove(quiz);
+            _context.SaveChanges();
+            return Ok(quiz);
         }
     }
 }
